@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080d1c">
+    <title>NEXUS NIC | NIC Decoder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div id="particles"></div>
+
+    <header class="navbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">N</span>
+            <span>NEXUS <strong>NIC</strong></span>
+        </a>
+
+        <div class="nav-right">
+            <span class="system-status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </span>
+            <button id="themeToggle" class="theme-button" aria-label="Toggle theme">☀</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-label">
+                <span class="label-line"></span>
+                SRI LANKAN NIC DECODER
+                <span class="label-line"></span>
+            </div>
+
+            <h1>Discover Your <span>Identity.</span></h1>
+
+            <p class="hero-description">
+                Decode your National Identity Card and discover your
+                date of birth, age and gender in seconds.
+            </p>
+        </section>
+
+        <section class="calculator glass-card">
+            <div class="card-heading">
+                <div>
+                    <span class="small-label">IDENTITY ANALYSIS</span>
+                    <h2>NIC Decoder</h2>
+                </div>
+                <div class="scan-icon">⌁</div>
+            </div>
+
+            <label for="nicInput">Enter your NIC number</label>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="nicInput"
+                    placeholder="Enter your NIC number"
+                    maxlength="12"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button id="clearButton" class="clear-button" type="button">✕</button>
+            </div>
+
+            <div class="input-hint">
+                <span>ⓘ</span>
+                Supports old NIC (9 digits + V/X) and new NIC (12 digits).
+            </div>
+
+            <button id="decodeButton" class="decode-button" type="button">
+                <span>DECODE MY NIC</span>
+                <span class="button-arrow">→</span>
+            </button>
+
+            <div id="scanner" class="scanner">
+                <div class="scanner-line"></div>
+                <p>ANALYSING IDENTITY DATA...</p>
+            </div>
+
+            <p id="errorMessage" class="error-message"></p>
+        </section>
+
+        <section id="results" class="results-section hidden">
+
+            <div class="result-heading">
+                <span class="small-label">ANALYSIS COMPLETE</span>
+                <h2>Your Identity <span>Revealed.</span></h2>
+                <p>Your NIC information has been decoded successfully.</p>
+            </div>
+
+            <div id="identityReveal" class="identity-reveal">
+                <div class="identity-orbit orbit-one"></div>
+                <div class="identity-orbit orbit-two"></div>
+
+                <div class="avatar-frame">
+                    <div id="avatarArtwork" class="avatar-artwork"></div>
+                </div>
+
+                <div class="identity-info">
+                    <span class="identity-caption">IDENTITY REVEALED</span>
+                    <h2 id="identityTitle">Your Identity</h2>
+                    <p id="identityAgeGroup">Adult</p>
+                    <div id="identityGender" class="identity-gender">MALE</div>
+                </div>
+
+                <div class="identity-sparkle">✦</div>
+            </div>
+
+            <div class="result-grid">
+                <div class="result-card">
+                    <span class="result-icon">🎂</span>
+                    <span class="result-label">DATE OF BIRTH</span>
+                    <h3 id="dobResult">--</h3>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-icon">⚧</span>
+                    <span class="result-label">GENDER</span>
+                    <h3 id="genderResult">--</h3>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-icon">⌛</span>
+                    <span class="result-label">CURRENT AGE</span>
+                    <h3 id="ageResult">--</h3>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-icon">📅</span>
+                    <span class="result-label">BIRTHDAY</span>
+                    <h3 id="weekdayResult">--</h3>
+                </div>
+            </div>
+
+            <p id="yearNotice" class="year-notice"></p>
+
+            <div class="result-actions">
+                <button id="copyButton" class="copy-button" type="button">
+                    <span>▣</span> COPY RESULTS
+                </button>
+
+                <button id="resetButton" class="reset-button" type="button">
+                    ↻ TRY ANOTHER NIC
+                </button>
+            </div>
+        </section>
+
+        <section class="information-section">
+            <div class="section-heading">
+                <span class="small-label">HOW IT WORKS</span>
+                <h2>Simple. Fast. <span>Intelligent.</span></h2>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-number">01</div>
+                    <h3>Enter NIC</h3>
+                    <p>Enter your old or new Sri Lankan National Identity Card number.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-number">02</div>
+                    <h3>Decode Data</h3>
+                    <p>The system analyses the year, day number and gender information.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-number">03</div>
+                    <h3>Get Results</h3>
+                    <p>View the decoded birth date, gender, age and birthday.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="format-section">
+            <span class="small-label">NIC FORMAT GUIDE</span>
+            <h2>Understand Your NIC</h2>
+
+            <div class="format-card">
+                <h3>Old NIC Format</h3>
+                <p class="format-example">XXXXXXXXXV</p>
+                <p>First 2 digits: Birth year. Next 3 digits: Day number.</p>
+            </div>
+
+            <div class="format-card">
+                <h3>New NIC Format</h3>
+                <p class="format-example">YYYYXXXXXXX</p>
+                <p>First 4 digits: Birth year. Next 3 digits: Day number.</p>
+            </div>
+
+            <p class="privacy-note">
+                🔒 Your NIC is processed locally in your browser.
+                This website does not verify identity or authenticate NICs.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">NEXUS <strong>NIC</strong></div>
+        <p>Designed with creativity and technology.</p>
+        <p class="copyright">© 2026 NEXUS NIC. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
