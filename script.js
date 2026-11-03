@@ -11,6 +11,8 @@ const resetButton = document.getElementById("resetButton");
 const copyButton = document.getElementById("copyButton");
 const themeToggle = document.getElementById("themeToggle");
 
+const formatResult = document.getElementById("formatResult");
+
 const results = document.getElementById("results");
 const scanner = document.getElementById("scanner");
 const errorMessage = document.getElementById("errorMessage");
@@ -80,24 +82,54 @@ function isLeapYear(year) {
 
 
 
+
 function getDateFromDay(year, dayNumber) {
 
-    const isLeap =
-        (year % 400 === 0) ||
-        (year % 4 === 0 && year % 100 !== 0);
+    // Same month allocation as your C++ program.
+    // February always contains 29 days.
 
-    const maxDays = isLeap ? 366 : 365;
+    const months = [
+        31, 29, 31, 30, 31, 30,
+        31, 31, 30, 31, 30, 31
+    ];
+
+    const monthNames = [
+        "January", "February", "March",
+        "April", "May", "June",
+        "July", "August", "September",
+        "October", "November", "December"
+    ];
 
     if (
         !Number.isInteger(dayNumber) ||
         dayNumber < 1 ||
-        dayNumber > maxDays
+        dayNumber > 366
     ) {
         throw new Error("Invalid NIC day number.");
     }
 
-    return new Date(Date.UTC(year, 0, dayNumber));
+    let remainingDays = dayNumber;
+    let monthIndex = 0;
+
+    while (
+        monthIndex < 12 &&
+        remainingDays > months[monthIndex]
+    ) {
+        remainingDays -= months[monthIndex];
+        monthIndex++;
+    }
+
+    if (monthIndex >= 12) {
+        throw new Error("Invalid NIC date.");
+    }
+
+    const dayOfMonth = remainingDays;
+
+    return new Date(
+        Date.UTC(year, monthIndex, dayOfMonth)
+    );
 }
+
 
 
 
@@ -359,7 +391,7 @@ function displayResults(data) {
         : "";
 
     results.classList.remove("hidden");
-
+    formatResult.textContent = data.isOldNIC ? "Old NIC" : "New NIC";
     results.scrollIntoView({
         behavior: "smooth",
         block: "start"
